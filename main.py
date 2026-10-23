@@ -29,6 +29,11 @@ class Game(object):
         pygame.transform.smoothscale(temporary_surface, self.surface.get_size(), self.surface)
 
         f = pygame.font.Font(pygame.font.get_default_font(), 10)
+
+        # There is an issue currently where rooms adjacent to the starting room
+        # have the door that connects to the centre room instead connect to themself.
+        # I am not sure what is causing this issue; at no point until now does this
+        # seem to happen.
         print([door for door in self.temple.current_floor[self.current_room].doors])
         i = f.render(f"""Floor: {self.temple.floor_number}
 {self.temple.current_floor[self.current_room]}
